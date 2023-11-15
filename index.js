@@ -18,6 +18,6 @@ app.get("/translate/:lang/:text", async (request, response, next) => {
   try {
   response.send(await translate(request.params.text, { to: request.params.lang }))
   } catch (err) {
-    response.send({"status": "error", "message": "Too many request"})
+    response.send({"status": "error", "message": "Too many request", "text": "","origin": request.params.text, "to": request.params.lang})
   }
 });
