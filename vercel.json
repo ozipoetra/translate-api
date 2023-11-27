@@ -10,7 +10,7 @@
     {
       "src": "/(.*)",
       "headers": {
- 			"cache-control": "public, s-maxage=604800"
+ 			"cache-control": "s-maxage=604800"
  			},
       "dest": "index.js"
     }
