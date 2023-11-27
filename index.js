@@ -18,8 +18,8 @@ app.post("/google/", async (request, response, next) => {
   try {
     //response.send(request.body)
   const trans = await translate(request.body.text, { to: request.body.target })
-  response.send({"text": trans.text, "error": null})
+  response.send({"translation": trans.text, "error": null})
   } catch (err) {
-    response.send({"error": "error", "message": "Too many request", "text": "","origin": request.body.text, "to": request.body.target})
+    response.send({"error": "error", "message": "Too many request", "translation": "","origin": request.body.text, "to": request.body.target})
   }
 });
