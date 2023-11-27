@@ -14,10 +14,12 @@ app.listen(PORT, () => {
 });
 
 //const text = await ;
-app.get("/translate/:lang/:text", async (request, response, next) => {
+app.post("/google/", async (request, response, next) => {
   try {
-  response.send(await translate(request.params.text, { to: request.params.lang }))
+    //response.send(request.body)
+  const trans = await translate(request.body.text, { to: request.body.target })
+  response.send({"text": trans.text, "error": null})
   } catch (err) {
-    response.send({"status": "error", "message": "Too many request", "text": "","origin": request.params.text, "to": request.params.lang})
+    response.send({"error": "error", "message": "Too many request", "text": "","origin": request.body.text, "to": request.body.target})
   }
 });
